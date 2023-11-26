@@ -143,3 +143,479 @@ Note that the subject id is **Required**
 ```
 Subject with ID ${id} has been deleted.
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Questions
+### Get all questions
+```
+  GET /api/questions
+```
+
+**Response**
+```json
+{
+    "questions": [
+        {
+            "id": 1,
+            "numberOfResponses": 6,
+            "numberOfCorrectResponses": 4,
+            "content": "Nouveau contenu de la question",
+            "type": "SINGLE",
+            "points": 15,
+            "level": {
+                "id": 2,
+                "description": "testnintermédiaire",
+                "maxPoints": 10,
+                "minPoints": 5
+            },
+            "subject": {
+                "id": 6,
+                "title": "TT",
+                "parentId": null
+            },
+            "validations": [
+                {
+                    "id": 54,
+                    "points": 10,
+                    "questionId": 1,
+                    "responseId": 1
+                },
+                {
+                    "id": 102,
+                    "points": 10,
+                    "questionId": 1,
+                    "responseId": 55
+                }
+            ],
+            "medias": [
+                {
+                    "id": 1,
+                    "type": null,
+                    "url": "test",
+                    "questionId": 1
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "numberOfResponses": 6,
+            "numberOfCorrectResponses": 4,
+            "content": "Nouveau contenu de la question",
+            "type": "SINGLE",
+            "points": 15,
+            "level": {
+                "id": 2,
+                "description": "testnintermédiaire",
+                "maxPoints": 10,
+                "minPoints": 5
+            },
+            "subject": {
+                "id": 6,
+                "title": "TT",
+                "parentId": null
+            },
+            "validations": [],
+            "medias": []
+        },
+        {
+            "id": 2,
+            "numberOfResponses": 6,
+            "numberOfCorrectResponses": 4,
+            "content": " contenu  question",
+            "type": "SINGLE",
+            "points": 15,
+            "level": {
+                "id": 2,
+                "description": "testnintermédiaire",
+                "maxPoints": 10,
+                "minPoints": 5
+            },
+            "subject": {
+                "id": 6,
+                "title": "TT",
+                "parentId": null
+            },
+            "validations": [],
+            "medias": [
+                {
+                    "id": 2,
+                    "type": null,
+                    "url": "test",
+                    "questionId": 2
+                },
+                {
+                    "id": 3,
+                    "type": "VIDEO",
+                    "url": "test",
+                    "questionId": 2
+                },
+                {
+                    "id": 52,
+                    "type": "VIDEO",
+                    "url": "test",
+                    "questionId": 2
+                },
+                {
+                    "id": 53,
+                    "type": "VIDEO",
+                    "url": "test",
+                    "questionId": 2
+                },
+                {
+                    "id": 54,
+                    "type": "VIDEO",
+                    "url": "test",
+                    "questionId": 2
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "numberOfResponses": 6,
+            "numberOfCorrectResponses": 4,
+            "content": "Nouveau contenu de la question",
+            "type": "SINGLE",
+            "points": 16,
+            "level": {
+                "id": 2,
+                "description": "testnintermédiaire",
+                "maxPoints": 10,
+                "minPoints": 5
+            },
+            "subject": {
+                "id": 6,
+                "title": "TT",
+                "parentId": null
+            },
+            "validations": [],
+            "medias": []
+        },
+        {
+            "id": 5,
+            "numberOfResponses": 6,
+            "numberOfCorrectResponses": 4,
+            "content": "Nouveau contenu de la question",
+            "type": "SINGLE",
+            "points": 16,
+            "level": {
+                "id": 2,
+                "description": "testnintermédiaire",
+                "maxPoints": 10,
+                "minPoints": 5
+            },
+            "subject": {
+                "id": 6,
+                "title": "TT",
+                "parentId": null
+            },
+            "validations": [],
+            "medias": []
+        }
+    ],
+    "message": "questions found"
+}
+```
+
+
+### Create question
+
+```
+  POST /api/questions
+```
+
+**Payload**
+```json
+ {
+  "numberOfResponses": 6,
+  "numberOfCorrectResponses": 4,  
+  "content": "Nouveau contenu de la question",  
+  "points": 16,
+  "levelId": 2,  
+  "subjectId": 6 
+}
+```
+
+**Response**
+```json
+{
+    "subject": {
+        "id": 52,
+        "numberOfResponses": 6,
+        "numberOfCorrectResponses": 4,
+        "content": "Nouveau contenu de la question",
+        "type": "SINGLE",
+        "points": 16,
+        "level": {
+            "id": 2,
+            "description": "testnintermédiaire",
+            "maxPoints": 10,
+            "minPoints": 5
+        },
+        "subject": {
+            "id": 6,
+            "title": "TT",
+            "parentId": null
+        },
+        "validations": null,
+        "medias": null
+    },
+    "message": "question created"
+}
+```
+
+#### Update question
+
+```
+  PUT /api/questions/${id}
+```
+
+**Payload**
+```json
+ {
+  "numberOfResponses": 6, 
+  "numberOfCorrectResponses": 4,
+  "content": " contenu  question",  
+  "points": 15,  
+  "levelId": 2,  
+  "subjectId": 6 
+ 
+}
+```
+
+**Response**
+```json
+{
+    "message": "question with ID 4 has been updated successfully"
+}
+```
+
+#### Delete question
+
+```
+  DELETE /api/questions/${id}
+```
+Note that the question id is **Required**
+
+**Response**
+```json
+Question with ID ${id} has been deleted.
+```
+
+#### get question by subject id
+
+```
+  PUT /api/questions/GetQuestionBYSubjectId/6
+```
+
+
+
+**Response**
+```json
+{
+    "questions": [
+        {
+            "id": 1,
+            "numberOfResponses": 6,
+            "numberOfCorrectResponses": 4,
+            "content": "Nouveau contenu de la question",
+            "type": "SINGLE",
+            "points": 15,
+            "level": {
+                "id": 2,
+                "description": "testnintermédiaire",
+                "maxPoints": 10,
+                "minPoints": 5
+            },
+            "subject": {
+                "id": 6,
+                "title": "TT",
+                "parentId": null
+            },
+            "validations": [
+                {
+                    "id": 54,
+                    "points": 10,
+                    "questionId": 1,
+                    "responseId": 1
+                },
+                {
+                    "id": 102,
+                    "points": 10,
+                    "questionId": 1,
+                    "responseId": 55
+                }
+            ],
+            "medias": [
+                {
+                    "id": 1,
+                    "type": null,
+                    "url": "test",
+                    "questionId": 1
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "numberOfResponses": 6,
+            "numberOfCorrectResponses": 4,
+            "content": "Nouveau contenu de la question",
+            "type": "SINGLE",
+            "points": 15,
+            "level": {
+                "id": 2,
+                "description": "testnintermédiaire",
+                "maxPoints": 10,
+                "minPoints": 5
+            },
+            "subject": {
+                "id": 6,
+                "title": "TT",
+                "parentId": null
+            },
+            "validations": [],
+            "medias": []
+        },
+        {
+            "id": 2,
+            "numberOfResponses": 6,
+            "numberOfCorrectResponses": 4,
+            "content": " contenu  question",
+            "type": "SINGLE",
+            "points": 15,
+            "level": {
+                "id": 2,
+                "description": "testnintermédiaire",
+                "maxPoints": 10,
+                "minPoints": 5
+            },
+            "subject": {
+                "id": 6,
+                "title": "TT",
+                "parentId": null
+            },
+            "validations": [],
+            "medias": [
+                {
+                    "id": 2,
+                    "type": null,
+                    "url": "test",
+                    "questionId": 2
+                },
+                {
+                    "id": 3,
+                    "type": "VIDEO",
+                    "url": "test",
+                    "questionId": 2
+                },
+                {
+                    "id": 52,
+                    "type": "VIDEO",
+                    "url": "test",
+                    "questionId": 2
+                },
+                {
+                    "id": 53,
+                    "type": "VIDEO",
+                    "url": "test",
+                    "questionId": 2
+                },
+                {
+                    "id": 54,
+                    "type": "VIDEO",
+                    "url": "test",
+                    "questionId": 2
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "numberOfResponses": 6,
+            "numberOfCorrectResponses": 4,
+            "content": "Nouveau contenu de la question",
+            "type": "SINGLE",
+            "points": 16,
+            "level": {
+                "id": 2,
+                "description": "testnintermédiaire",
+                "maxPoints": 10,
+                "minPoints": 5
+            },
+            "subject": {
+                "id": 6,
+                "title": "TT",
+                "parentId": null
+            },
+            "validations": [],
+            "medias": []
+        },
+        {
+            "id": 5,
+            "numberOfResponses": 6,
+            "numberOfCorrectResponses": 4,
+            "content": "Nouveau contenu de la question",
+            "type": "SINGLE",
+            "points": 16,
+            "level": {
+                "id": 2,
+                "description": "testnintermédiaire",
+                "maxPoints": 10,
+                "minPoints": 5
+            },
+            "subject": {
+                "id": 6,
+                "title": "TT",
+                "parentId": null
+            },
+            "validations": [],
+            "medias": []
+        },
+        {
+            "id": 52,
+            "numberOfResponses": 6,
+            "numberOfCorrectResponses": 4,
+            "content": "Nouveau contenu de la question",
+            "type": "SINGLE",
+            "points": 16,
+            "level": {
+                "id": 2,
+                "description": "testnintermédiaire",
+                "maxPoints": 10,
+                "minPoints": 5
+            },
+            "subject": {
+                "id": 6,
+                "title": "TT",
+                "parentId": null
+            },
+            "validations": [],
+            "medias": []
+        }
+    ],
+    "message": "questions found"
+}
+```
+
+
+
+
+
+
